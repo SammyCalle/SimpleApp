@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.example.simpleapp'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.simpleapp"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation(project(":core-data"))
+    implementation(project(":core-database"))
+    implementation "androidx.core:core-ktx:$androidX_core_version"
+    implementation "androidx.appcompat:appcompat:$androidX_appcompat_version"
+    implementation "com.google.android.material:material:$android_material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$androidX_contraintL_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$androidX_navigation_fragment_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$androidX_navigation_fragment_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinX_courotines_version"
+    implementation "io.insert-koin:koin-android:$koin_android_version"
+    implementation 'androidx.annotation:annotation:1.6.0'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //Test
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidX_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidX_espresso_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinX_courotines_version"
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    // Java Compatibility
+    implementation "io.insert-koin:koin-android-compat:$koin_android_version"
+    // Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:$koin_android_version"
+    // Navigation Graph
+    implementation "io.insert-koin:koin-androidx-navigation:$koin_android_version"
+
+
+
+
+}
